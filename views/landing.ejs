@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Issue Tracker API</title>
+    <style media="screen">
+    table {
+      width: 100%;
+    }
+      tr, td {
+        border: 1px solid black;
+        padding: 6px;
+      }
+    </style>
+  </head>
+  <body style='font-family: arial'>
+    <h1>Issue tracker API</h1>
+    <h3>Welcome to the Oddert Issue Tracker.</h3>
+    <hr />
+    <a href="/issues">View All Issues</a>
+    <a href="/issues/new">Create a new issue</a>
+    <hr />
+    <h3>API</h3>
+    <h4>Methods:</h4>
+    <table>
+      <thead>
+        <td>Extension</td>
+        <td>Method</td>
+        <td>Description</td>
+        <td>Include</td>
+      </thead>
+      <tbody>
+        <tr>
+          <td>/api/issues</td>
+          <td>GET</td>
+          <td>Return array of issues</td>
+          <td>(optional) Add parameters to the URL string to filter results.</td>
+        </tr>
+        <tr>
+          <td>/api/issues</td>
+          <td>POST</td>
+          <td>Add a new issue</td>
+          <td>Include a body with parameters</td>
+        </tr>
+        <tr>
+          <td>/api/issues/{id}</td>
+          <td>PUT</td>
+          <td>Edit an existing issue</td>
+          <td>A body with updated parameters</td>
+        </tr>
+        <tr>
+          <td>/api/issues/{id}</td>
+          <td>DELETE</td>
+          <td>Delete an issue</td>
+          <td>None</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Please Note:</strong> If sending from a HTML doc, usea POST with method override <code>?_method=DELETE</code> in the URL where DELETE is prefered method.</p>
+    <h4>Include in body when creating or updating:</h4>
+    <table>
+      <thead>
+        <td>Parameter</td>
+        <td>Type</td>
+        <td>Description</td>
+        <td>Required?</td>
+      </thead>
+      <tbody>
+        <tr>
+          <td>issue_title</td>
+          <td>String</td>
+          <td>A title for the issue</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>issue_text</td>
+          <td>String</td>
+          <td>A description of the issue</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>created_by</td>
+          <td>String</td>
+          <td>Your display name</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>assigned_to</td>
+          <td>String</td>
+          <td>A username of the person assigned to the issue</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>status_text</td>
+          <td>String</td>
+          <td>A short description of progress made / current status</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>open</td>
+          <td>Boolean</td>
+          <td>True for open issue, False for closed issue</td>
+          <td>No</td>
+        </tr>
+      </tbody>
+    </table>
+    <h4>Sample issue list returned:</h4>
+    <code style='white-space: pre;'>
+"issues": [
+  {
+    "name": "Placeholder for mongoose",
+    "open": true,
+    "_id": "5b5c949e860eaa3d8c3c1878",
+    "issue_title": "Kikat mug coffee",
+    "issue_text": "It lacks the coffee, fill it up (other mugs are available)",
+    "created_by": "Oddert",
+    "created_on": "Sat Jul 28 2018 17:06:54 GMT+0100 (GMT Summer Time)",
+    "updated_on": "Sat Jul 28 2018 17:06:54 GMT+0100 (GMT Summer Time)",
+    "assigned_to": "Elliot",
+    "status_text": "Stil got squat",
+    "__v": 0
+  }
+]</code>
+  </body>
+</html>

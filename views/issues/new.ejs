@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <style media="screen">
+  * {
+    font-family: arial, helvetica;
+  }
+    input {
+      width: 100%;
+      padding: 6px;
+    }
+  </style>
+  <body>
+    <h1>Create a new issue</h1>
+    <form action="/issues" method="POST">
+      <input type="text" name="newIssue[issue_title]" placeholder="Title (required)" required>
+      <input type="text" name="newIssue[issue_text]" placeholder="Description (required)" required>
+      <input type="text" name="newIssue[created_by]" placeholder="Created By (required)" required>
+
+      <input type="text" name="newIssue[assigned_to]" placeholder="Assigned To">
+      <input type="text" name="newIssue[status_text]" placeholder="Current Status">
+      <button>Submit</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <style media="screen">
+  * {
+    font-family: arial, helvetica;
+  }
+    input {
+      width: 100%;
+      padding: 6px;
+    }
+  </style>
+  <body>
+    <h1>Edit an issue</h1>
+    <form action="/api/issues/<%= issue._id %>?_method=PUT" method="POST">
+      <input type="text" name="editIssue[issue_title]" placeholder="Title (required)" value="<%= issue.issue_title %>" required>
+      <input type="text" name="editIssue[issue_text]" placeholder="Description (required)" value="<%= issue.issue_text %>" required>
+      <input type="text" name="editIssue[created_by]" placeholder="Created By (required)" value="<%= issue.created_by %>" required>
+
+      <input type="text" name="editIssue[assigned_to]" value="<%= issue.assigned_to %>" placeholder="Assigned To">
+      <input type="text" name="editIssue[status_text]" value="<%= issue.status_text %>" placeholder="Current Status">
+
+      <select name="editIssue[open]" value="<%= issue.open %>">
+        <option value="true">Open</option>
+        <option value="false">Closed</option>
+      </select>
+
+      <button>Submit</button>
+    </form>
+    <a href="/issues">Back</a>
+  </body>
+</html>

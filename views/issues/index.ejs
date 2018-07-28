@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body style='font-family: arial, helvetica;'>
+    <h1>View all issues</h1>
+    <% issues.forEach(each => { %>
+      <div style='border: 1px solid black; padding: 5px 20px;'>
+        <% if (each.open) { %>
+          <h3><%= each.issue_title %> (open)</h3>
+        <% } else { %>
+          <h3><%= each.issue_title %> (closed)</h3>
+        <% } %>
+
+        <i>id: <%= each._id %></i>
+
+        <p><%= each.issue_text %></p>
+
+        <p>Created by <strong><%= each.created_by %></strong> on <strong><%= each.created_on %></strong></p>
+
+        <% if (each.status_text) { %>
+          <p><strong>Current Status:</strong> <%= each.status_text %></p>
+        <% } %>
+
+        <% if (each.updated_on) { %>
+          <p>Last Updated <strong><%= each.created_on %></strong></p>
+        <% } %>
+
+        <% if (each.assigned_to) { %>
+          <p>Assigned to: <%= each.assigned_to %></p>
+        <% } %>
+
+        <a href="/issues/<%= each._id %>/update">Edit</a>
+        <form action="/api/issues/<%= each._id %>/?_method=DELETE" method="POST">
+          <button>Delete</button>
+        </form>
+
+      </div>
+    <% }) %>
+  </body>
+</html>
