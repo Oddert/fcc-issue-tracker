@@ -4,7 +4,8 @@ const express         = require('express'),
       helmet          = require('helmet'),
       mongoose        = require('mongoose'),
       bodyParser      = require('body-parser'),
-      methodOverride  = require('method-override');
+      methodOverride  = require('method-override'),
+      ejs             = require('ejs');
 
 const Issue       = require('./models/Issue');
 
@@ -120,6 +121,6 @@ app.delete('/api/issues/:id', (req, res) => {
 
 
 var server = app.listen(
-  process.env.PORT,
+  process.env.PORT || 3000,
   () => console.log(`${new Date().toLocaleTimeString()}: Server initialized on port: ${process.env.PORT}`)
 );
